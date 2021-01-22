@@ -1,0 +1,56 @@
+<div class="container">
+  <div>
+    <mat-form-field appearance="standard">
+      <p><mat-label>You are at:</mat-label></p>
+      <input
+        type="text"
+        placeholder="Chinatown"
+        aria-label="Number"
+        matInput
+        (input)="onStartInput($event.target.value)"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete">
+        <mat-option
+          (onSelectionChange)="onStartChange(place.description)"
+          *ngFor="let place of starting"
+          [value]="place.description"
+        >
+          {{ place.description }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div>
+    <mat-form-field appearance="standard">
+      <p><mat-label>You want to go to:</mat-label></p>
+      <input
+        type="text"
+        placeholder="City Hall"
+        aria-label="Number"
+        matInput
+        (input)="onDestinationInput($event.target.value)"
+        [matAutocomplete]="boto"
+      />
+      <mat-autocomplete #boto="matAutocomplete">
+        <mat-option
+          (onSelectionChange)="onDestinationChange(place.description)"
+          *ngFor="let place of destination"
+          [value]="place.description"
+        >
+          {{ place.description }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+  <div>
+    <button
+      (click)="onSubmit()"
+      [disabled]="!chosenStart && !chosenDestination"
+      color="accent"
+      mat-raised-button
+    >
+      Get me there!
+    </button>
+  </div>
+</div>

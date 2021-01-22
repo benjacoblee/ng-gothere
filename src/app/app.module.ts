@@ -1,18 +1,29 @@
 import { HttpClientModule } from "@angular/common/http";
 import { NgModule } from "@angular/core";
-import { MatIconModule, MatToolbarModule } from "@angular/material";
+import {
+  MatAutocompleteModule,
+  MatFormFieldModule,
+  MatIconModule,
+  MatInputModule,
+  MatToolbarModule,
+} from "@angular/material";
+import { MatButtonModule } from "@angular/material/button";
 import { MatExpansionModule } from "@angular/material/expansion";
-import { MatTableModule } from "@angular/material/table";
-
 import { BrowserModule } from "@angular/platform-browser";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
 import { BusStopsComponent } from "./bus-stops/bus-stops.component";
 import { BusesComponent } from "./buses/buses.component";
+import { PlacesComponent } from "./places/places.component";
 
 @NgModule({
-  declarations: [AppComponent, BusStopsComponent, BusesComponent],
+  declarations: [
+    AppComponent,
+    BusStopsComponent,
+    BusesComponent,
+    PlacesComponent,
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,7 +32,10 @@ import { BusesComponent } from "./buses/buses.component";
     MatExpansionModule,
     MatToolbarModule,
     MatIconModule,
-    MatTableModule,
+    MatAutocompleteModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

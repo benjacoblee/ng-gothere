@@ -59,6 +59,37 @@ app.get("/buses", async (req, res) => {
     .catch((err) => console.log(err));
 });
 
+app.get("/places", async (req, res) => {
+  const { input } = req.query;
+
+  if (input) {
+    await axios
+      .get(
+        `https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${input}&components=country:sg&types=geocode&key=${process.env.GOOGLE_API_KEY}`
+      )
+      .then(({ data: { predictions } }) => {
+        console.log(predictions);
+        res.status(200).json(predictions);
+      })
+      .catch((err) => console.log(err.message));
+  }
+});
+
+app.get("/directions", async (req, res) => {
+  const { origin, destination } = req.query;
+  const modes = [];
+  if (origin && destination) {
+    await axios
+      .get(
+        `https://maps.googleapis.com/maps/api/directions/json?origin=${origin}&destination=${destination}&mode=transit&key=${process.env.GOOGLE_API_KEY}`
+      )
+      .then(({ data }) => {
+        res.status(200).json(data);
+      })
+      .catch((err) => console.log(err));
+  }
+});
+
 app.listen(PORT, () => {
   console.log("Listening on port 3000");
 });
