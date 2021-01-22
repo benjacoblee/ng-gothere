@@ -6,6 +6,7 @@
     </div>
   </div>
   <h2 *ngIf="error">{{ error }}</h2>
+  <h2 *ngIf="!error && !busStops.length">Loading...</h2>
   <mat-expansion-panel
     *ngFor="let busStop of busStops"
     (click)="onClick(busStop.BusStopCode)"

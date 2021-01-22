@@ -30,9 +30,7 @@ export class BusStopsComponent implements OnInit {
   error;
   subscription: Subscription;
 
-  constructor(private busStopsService: BusStopsService) {}
-
-  ngOnInit() {
+  fetchBuses() {
     window.navigator.geolocation.getCurrentPosition(
       ({ coords: { latitude, longitude } }) => {
         if (this.subscription) {
@@ -54,17 +52,20 @@ export class BusStopsComponent implements OnInit {
     );
   }
 
+  constructor(private busStopsService: BusStopsService) {}
+
+  ngOnInit() {
+    this.fetchBuses();
+  }
+
   onClick(busStopCode) {
     this.busStopCode = busStopCode;
   }
 
   onRefreshClick() {
-    this.subscription.unsubscribe();
-
-    this.subscription = timer(0, 1000 * 30)
-      .pipe(mergeMap(() => this.busStopsService.fetchBusStops(this.coords)))
-      .subscribe((res: BusStop[]) => {
-        this.busStops = res;
-      });
+    this.busStops = [];
+    setTimeout(() => {
+      this.fetchBuses();
+    }, 500);
   }
 }
