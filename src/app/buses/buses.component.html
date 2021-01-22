@@ -1,0 +1,11 @@
+<div class="container" *ngFor="let busService of busServices">
+  <div class="bus-container">
+    <mat-icon> directions_bus</mat-icon>
+    <div>{{ busService.ServiceNo }}</div>
+  </div>
+  <div class="timings">
+    <span>{{ calculateArrival(busService.NextBus.EstimatedArrival) }}</span>
+    <span>{{ calculateArrival(busService.NextBus2.EstimatedArrival) }}</span>
+    <span>{{ calculateArrival(busService.NextBus3.EstimatedArrival) }}</span>
+  </div>
+</div>

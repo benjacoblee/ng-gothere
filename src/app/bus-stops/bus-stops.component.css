@@ -1,0 +1,22 @@
+h2,
+mat-accordion,
+mat-expansion-panel {
+  margin: 1.5rem;
+}
+
+h2 {
+  font-weight: 500;
+}
+
+mat-expansion-panel {
+  padding: 1.5rem;
+}
+
+mat-panel-title {
+  font-weight: bold;
+}
+
+mat-panel-title span {
+  font-weight: normal;
+  margin-left: 0.5rem;
+}
