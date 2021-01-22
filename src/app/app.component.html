@@ -1,5 +1,4 @@
 <mat-toolbar color="accent">
-  <span>Go Where</span>
+  <a [routerLink]="['/']"><span>Go Where</span></a>
 </mat-toolbar>
-<app-places></app-places>
-<app-bus-stops></app-bus-stops>
+<router-outlet></router-outlet>

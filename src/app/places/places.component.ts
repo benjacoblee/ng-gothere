@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
-import { PlacesService } from "./places.service";
+import { Router } from "@angular/router";
+import { PlacesService } from "../shared/places.service";
 
 @Component({
   selector: "app-places",
@@ -11,7 +12,9 @@ export class PlacesComponent implements OnInit {
   destination = [];
   chosenStart;
   chosenDestination;
-  constructor(private placesService: PlacesService) {}
+  mode = "";
+  errors = "";
+  constructor(private placesService: PlacesService, private router: Router) {}
 
   ngOnInit() {}
 
@@ -28,18 +31,29 @@ export class PlacesComponent implements OnInit {
   }
 
   onStartChange(chosenStart) {
-    console.log(chosenStart);
     this.chosenStart = chosenStart;
   }
 
   onDestinationChange(chosenDestination) {
-    console.log(chosenDestination);
     this.chosenDestination = chosenDestination;
   }
 
   onSubmit() {
-    this.placesService
-      .getDirections(this.chosenStart, this.chosenDestination)
-      .subscribe((res) => console.log(res));
+    if (!this.chosenStart || !this.chosenDestination) {
+      this.errors = "Please pick a location from the dropdown";
+      return;
+    }
+
+    const data = {
+      chosenStart: this.chosenStart,
+      chosenDestination: this.chosenDestination,
+      mode: this.mode,
+    };
+
+    this.router.navigate(["/directions"], { state: { data } });
+  }
+
+  onSelectMode(mode) {
+    this.mode = mode;
   }
 }

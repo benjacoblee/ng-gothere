@@ -1,0 +1,36 @@
+<div class="container">
+  <ng-container *ngFor="let route of routes">
+    <ng-container *ngFor="let leg of route.legs">
+      <p *ngIf="leg.departure_time">
+        Depart at <b>{{ leg.departure_time.text }}</b>
+      </p>
+      <p *ngIf="leg.arrival_time">
+        Estimated arrival time: <b>{{ leg.arrival_time?.text }}</b>
+      </p>
+      <p>
+        Distance: <b>{{ leg.distance.text }}</b>
+      </p>
+      <p>
+        Duration: <b>{{ leg.duration.text }}</b>
+      </p>
+      <ng-container *ngFor="let step of leg.steps; let i = index">
+        <h3 *ngIf="step.html_instructions && i === 0">Details:</h3>
+        <p>MODE:{{ step.travel_mode }}</p>
+        <hr />
+        <p [innerHTML]="step.html_instructions"></p>
+
+        <p *ngIf="step.transit_details">
+          Depart from: <b>{{ step.transit_details.departure_stop.name }}</b>
+        </p>
+        <p *ngIf="step.transit_details">
+          Arrive at: <b>{{ step.transit_details.arrival_stop.name }}</b>
+        </p>
+        <ng-container *ngIf="step.steps">
+          <div *ngFor="let detailedStep of step.steps; let i = index">
+            <p [innerHTML]="detailedStep.html_instructions"></p>
+          </div>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>

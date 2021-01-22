@@ -43,10 +43,26 @@
       </mat-autocomplete>
     </mat-form-field>
   </div>
+  <div class="radio">
+    <mat-radio-group>
+      <mat-radio-button (change)="onSelectMode($event.value)" value="walking"
+        >Walking</mat-radio-button
+      >
+      <mat-radio-button (change)="onSelectMode($event.value)" value="driving"
+        >Driving</mat-radio-button
+      >
+      <mat-radio-button (change)="onSelectMode($event.value)" value="transit"
+        >Transit</mat-radio-button
+      >
+    </mat-radio-group>
+  </div>
+  <div class="errors" *ngIf="errors.length">
+    {{ errors }}
+  </div>
   <div>
     <button
       (click)="onSubmit()"
-      [disabled]="!chosenStart && !chosenDestination"
+      [disabled]="!(chosenStart && chosenDestination && mode)"
       color="accent"
       mat-raised-button
     >

@@ -9,7 +9,7 @@ export class BusStopsService {
 
   fetchBusStops(coords: { latitude: number; longitude: number }) {
     return this.http.get(
-      `/bus-stops?lat=${coords.latitude}&long=${coords.longitude}`
+      `/api/bus-stops?lat=${coords.latitude}&long=${coords.longitude}`
     );
   }
 }

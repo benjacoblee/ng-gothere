@@ -1,3 +1,21 @@
 .container {
   margin: 1.5rem;
 }
+
+.radio {
+  margin-bottom: 1.5rem;
+}
+
+.errors {
+  font-size: small;
+  color: #ff4081;
+  margin-bottom: 0.5rem;
+}
+
+mat-form-field {
+  width: 50%;
+}
+
+mat-radio-button {
+  margin-right: 0.5rem;
+}

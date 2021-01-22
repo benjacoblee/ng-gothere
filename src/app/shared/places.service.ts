@@ -8,12 +8,12 @@ export class PlacesService {
   constructor(private http: HttpClient) {}
 
   getSuggestions(searchTerm: string) {
-    return this.http.get(`/places?input=${searchTerm}`);
+    return this.http.get(`/api/places?input=${searchTerm}`);
   }
 
-  getDirections(origin: string, destination: string) {
+  getDirections(origin: string, destination: string, mode: string) {
     return this.http.get(
-      `/directions?origin=${origin}&destination=${destination}`
+      `/api/directions?origin=${origin}&destination=${destination}&mode=${mode}`
     );
   }
 }

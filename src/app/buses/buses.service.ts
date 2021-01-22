@@ -8,6 +8,6 @@ export class BusesService {
   constructor(private http: HttpClient) {}
 
   fetchTimings(busStopCode) {
-    return this.http.get(`/buses?busStopCode=${busStopCode}`);
+    return this.http.get(`/api/buses?busStopCode=${busStopCode}`);
   }
 }

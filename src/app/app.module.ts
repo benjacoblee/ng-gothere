@@ -5,6 +5,7 @@ import {
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
+  MatRadioModule,
   MatToolbarModule,
 } from "@angular/material";
 import { MatButtonModule } from "@angular/material/button";
@@ -16,6 +17,8 @@ import { AppComponent } from "./app.component";
 import { BusStopsComponent } from "./bus-stops/bus-stops.component";
 import { BusesComponent } from "./buses/buses.component";
 import { PlacesComponent } from "./places/places.component";
+import { DirectionsComponent } from './directions/directions.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,8 @@ import { PlacesComponent } from "./places/places.component";
     BusStopsComponent,
     BusesComponent,
     PlacesComponent,
+    DirectionsComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,6 +41,7 @@ import { PlacesComponent } from "./places/places.component";
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
+    MatRadioModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

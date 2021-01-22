@@ -1,11 +1,16 @@
 h2,
 mat-accordion,
-mat-expansion-panel {
+mat-expansion-panel,
+mat-icon {
   margin: 1.5rem;
 }
 
 h2 {
   font-weight: 500;
+}
+
+mat-icon {
+  cursor: pointer;
 }
 
 mat-expansion-panel {
@@ -19,4 +24,10 @@ mat-panel-title {
 mat-panel-title span {
   font-weight: normal;
   margin-left: 0.5rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
