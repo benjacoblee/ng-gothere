@@ -3,10 +3,17 @@ const app = express();
 const axios = require("axios");
 require("dotenv").config();
 const utils = require("./utils/busStops");
+const path = require("path");
 
 const PORT = process.env.PORT || 3000;
 
 const rootUrl = "http://datamall2.mytransport.sg/ltaodataservice";
+
+app.use(express.static(__dirname + "/dist"));
+
+app.get("/", function (req, res) {
+  res.sendFile(path.join(__dirname + "/dist/index.html"));
+});
 
 app.get("/api/bus-stops", async (req, res) => {
   const { lat, long } = req.query;
