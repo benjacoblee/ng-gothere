@@ -1,3 +1,21 @@
 .container {
   margin: 1.5rem;
 }
+
+.step-instructions {
+  display: flex;
+  align-items: center;
+}
+
+mat-icon {
+  margin-right: 0.5rem;
+}
+
+div p div {
+  margin-top: 00.5rem;
+  font-size: small;
+}
+
+div p div:last-of-type {
+  margin-bottom: 1.5rem;
+}

@@ -15,9 +15,15 @@
       </p>
       <ng-container *ngFor="let step of leg.steps; let i = index">
         <h3 *ngIf="step.html_instructions && i === 0">Details:</h3>
-        <p>MODE:{{ step.travel_mode }}</p>
-        <hr />
-        <p [innerHTML]="step.html_instructions"></p>
+        <p class="step-instructions">
+          <span
+            ><mat-icon>{{
+              displayTravelIcon(step.travel_mode)
+            }}</mat-icon></span
+          ><span
+            ><b>{{ step.html_instructions }}</b></span
+          >
+        </p>
 
         <p *ngIf="step.transit_details">
           Depart from: <b>{{ step.transit_details.departure_stop.name }}</b>

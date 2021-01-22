@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewEncapsulation } from "@angular/core";
 import { Router } from "@angular/router";
 import { PlacesService } from "../shared/places.service";
 
@@ -6,6 +6,7 @@ import { PlacesService } from "../shared/places.service";
   selector: "app-directions",
   templateUrl: "./directions.component.html",
   styleUrls: ["./directions.component.css"],
+  encapsulation: ViewEncapsulation.None,
 })
 export class DirectionsComponent implements OnInit {
   data: { chosenStart: string; chosenDestination: string; mode: string };
@@ -25,6 +26,7 @@ export class DirectionsComponent implements OnInit {
           text: string;
         };
         steps: {
+          travel_mode: string;
           html_instructions: string;
           transit_details: {
             departure_stop: {
@@ -60,6 +62,24 @@ export class DirectionsComponent implements OnInit {
         .subscribe(({ routes }: { routes: [] }) => {
           this.routes = routes;
         });
+    }
+  }
+
+  displayTravelIcon(mode) {
+    switch (mode) {
+      case "WALKING": {
+        return "directions_walk";
+      }
+
+      case "TRANSIT": {
+        return "directions_transit";
+      }
+      case "DRIVING": {
+        return "drive_eta";
+      }
+      default: {
+        console.log(mode);
+      }
     }
   }
 }
