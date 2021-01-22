@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { timer } from "rxjs";
+import { Subscription, timer } from "rxjs";
 import { mergeMap } from "rxjs/operators";
 import { BusesService } from "./buses.service";
 
@@ -30,6 +30,7 @@ interface busService {
 })
 export class BusesComponent implements OnInit {
   busServices: busService[];
+  subscription: Subscription;
   @Input() parentCode;
   @Input() busStopCode;
   constructor(private busesService: BusesService) {}
@@ -38,8 +39,9 @@ export class BusesComponent implements OnInit {
 
   ngOnChanges() {
     this.busServices = [];
+    if (this.subscription) this.subscription.unsubscribe();
     if (this.parentCode === parseInt(this.busStopCode)) {
-      timer(0, 1000 * 60)
+      this.subscription = timer(0, 1000 * 60)
         .pipe(mergeMap(() => this.busesService.fetchTimings(this.busStopCode)))
         .subscribe((res: busService[]) => {
           res.sort((a, b) => {
