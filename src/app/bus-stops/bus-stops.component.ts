@@ -59,7 +59,7 @@ export class BusStopsComponent implements OnInit {
   }
 
   onClick(busStopCode) {
-    this.busStopCode = busStopCode;
+    this.busStopCode = parseInt(busStopCode);
   }
 
   onRefreshClick() {
@@ -67,5 +67,9 @@ export class BusStopsComponent implements OnInit {
     setTimeout(() => {
       this.fetchBuses();
     }, 500);
+  }
+
+  shouldStayOpen(busStopCode) {
+    return this.busStopCode === parseInt(busStopCode);
   }
 }

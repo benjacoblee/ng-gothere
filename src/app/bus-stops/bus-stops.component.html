@@ -10,6 +10,7 @@
   <mat-expansion-panel
     *ngFor="let busStop of busStops"
     (click)="onClick(busStop.BusStopCode)"
+    [expanded]="shouldStayOpen(busStop.BusStopCode)"
   >
     <mat-expansion-panel-header>
       <mat-panel-title

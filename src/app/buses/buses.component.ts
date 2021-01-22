@@ -37,7 +37,8 @@ export class BusesComponent implements OnInit {
   ngOnInit() {}
 
   ngOnChanges() {
-    if (this.parentCode === this.busStopCode) {
+    this.busServices = [];
+    if (this.parentCode === parseInt(this.busStopCode)) {
       timer(0, 1000 * 60)
         .pipe(mergeMap(() => this.busesService.fetchTimings(this.busStopCode)))
         .subscribe((res: busService[]) => {
