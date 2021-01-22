@@ -16,6 +16,9 @@
       <mat-panel-title
         >{{ busStop.Description }}
         <span>{{ busStop.BusStopCode }}</span>
+        <span class="distance"
+          >{{ busStop.Distance | number: "1.2" }}km away</span
+        >
       </mat-panel-title>
     </mat-expansion-panel-header>
     <app-buses

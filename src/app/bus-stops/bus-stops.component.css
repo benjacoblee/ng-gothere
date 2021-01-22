@@ -18,6 +18,8 @@ mat-expansion-panel {
 }
 
 mat-panel-title {
+  display: flex;
+  align-items: center;
   font-weight: bold;
 }
 
@@ -30,4 +32,8 @@ mat-panel-title span {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.distance {
+  font-size: small;
 }
