@@ -20,11 +20,9 @@
             ><mat-icon>{{
               displayTravelIcon(step.travel_mode)
             }}</mat-icon></span
-          ><span
-            ><b>{{ step.html_instructions }}</b></span
-          >
+          ><span [innerHTML]="step.html_instructions"><b></b></span>
         </p>
-
+        <hr />
         <p *ngIf="step.transit_details">
           Depart from: <b>{{ step.transit_details.departure_stop.name }}</b>
         </p>
